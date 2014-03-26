@@ -32,12 +32,14 @@
 
   nav {
     font-weight: bold; 
+    background: #444;
+    color: white;
   }
+
   nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    background: black;
     overflow: hidden; 
   }
   nav li {
@@ -63,29 +65,20 @@
   
   a {
     text-decoration: none;
-    color: #A9A9F5;
+    color: white;
   }
   
   a:hover {
     text-decoration: underline;
-    color: #FFF;
+    color: white;
   }
   
   a:link { 
-    color:#00FFFF; 
-  }
-  
-  a:visited { 
-    color:#40FF00;
-  }
-  
-  a:active {
-    color:#0000FF;
+    color:white; 
   }
   
   textarea { 
     border: outset; border-color: black;
-    text-align: center;
   }
   
   footer {
