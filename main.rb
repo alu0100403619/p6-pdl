@@ -33,10 +33,11 @@ get '/:selected?' do |selected|
   pp programs
   puts "selected = #{selected}"
   c  = PL0Program.first(:name => selected)
-  source = if c then c.source else "a = 3-2-1" end
+  source = if c then c.source else "a = 3-2-1." end
   erb :index, 
       :locals => { :programs => programs, :source => source }
 end
+                 
 
 post '/save' do
   pp params
@@ -47,6 +48,10 @@ post '/save' do
     c.source = params["input"]
     c.save
   else
+        if PL0Program.all.size > 9
+                 c = PL0Program.all.simple
+                 c.destroy
+        end
     c = PL0Program.new
     c.name = params["fname"]
     c.source = params["input"]
