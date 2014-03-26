@@ -4,7 +4,7 @@ suite('Tests', function(){
   
   test('Asignacion: ', function(){
     object = pl0.parse("x = 9 .")
-    assert.equal(object.type, "=")
+    assert.equal(object.program, "=")
     assert.equal(object.left.type, "ID")
     assert.equal(object.left.value, "x")
     assert.equal(object.right.type, "NUM")
