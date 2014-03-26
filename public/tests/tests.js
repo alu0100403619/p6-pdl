@@ -3,7 +3,7 @@ var assert = chai.assert;
 suite('Tests', function(){
   
   test('Asignacion: ', function(){
-    obj = pl0.parse("x = 9 .")
+    object = pl0.parse("x = 9 .")
     assert.equal(object.type, "=")
     assert.equal(object.left.type, "ID")
     assert.equal(object.left.value, "x")
