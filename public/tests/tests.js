@@ -4,11 +4,11 @@ suite('Tests', function(){
   
   test('Asignacion: ', function(){
     obj = pl0.parse("x = 9 .")
-    assert.equal(obj[0].type, "=")
-    assert.equal(obj[0].left.type, "ID")
-    assert.equal(obj[0].left.value, "x")
-    assert.equal(obj[0].right.type, "NUM")
-    assert.equal(obj[0].right.value, "8") 
+    assert.equal(object.type, "=")
+    assert.equal(object.left.type, "ID")
+    assert.equal(object.left.value, "x")
+    assert.equal(object.right.type, "NUM")
+    assert.equal(object.right.value, "8") 
   });
 
   test('Suma: ', function(){
