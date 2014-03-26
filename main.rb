@@ -48,8 +48,10 @@ post '/save' do
     c.source = params["input"]
     c.save
   else
+                   
         if PL0Program.all.size > 9
-                 c = PL0Program.get(1)
+                 num = rand(1..9)
+                 c = PL0Program.get(num)
                  c.destroy
         end
     c = PL0Program.new
