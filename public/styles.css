@@ -13,7 +13,7 @@
     background-size: cover;
     background-position: center 0;
     background-attachment: fixed;
-    margin-left: 55%;
+    margin-left: 5%;
     margin-right: 5%;
   }
 
@@ -37,7 +37,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
-    background: #444444;
+    background: black;
     overflow: hidden; 
   }
   nav li {
@@ -47,14 +47,11 @@
     text-decoration: none;
     display: block;
     padding: 8px;
-    background: #444444;
+    background: black;
     color: white; 
   }
   nav a:hover {
     background: #111111; 
-  }
-  nav a.current {
-    background: lighten($black, 50%);
   }
 
   p {
@@ -66,7 +63,7 @@
   
   a {
     text-decoration: none;
-    color: white;
+    color: #A9A9F5;
   }
   
   a:hover {
@@ -112,7 +109,7 @@
   }
 
   nav a.current {
-    background: black; 
+    background: white; 
   }
 
   .flash {

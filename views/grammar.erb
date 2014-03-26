@@ -59,10 +59,10 @@ factor = NUMBER
 
 _ = $[ \t\n\r]*
 
-ASSIGN   = _ op:'=' _  { return op; }
-ADD      = _ op:[+-] _ { return op; }
-MUL      = _ op:[*/] _ { return op; }
-COND     = _ op:$([&lt;>=!][=]/[&lt;>]) _ { return op; }
+ASSIGN   = _ op:'=' _
+ADD      = _ op:[+-] _
+MUL      = _ op:[*/] _
+COND     = _ op:$([&lt;>=!][=]/[&lt;>]) _
 LEFTPAR  = _"("_
 RIGHTPAR = _")"_
 PYC      = _";"_
