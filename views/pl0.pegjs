@@ -19,31 +19,89 @@
   }
 }
 
-prog   = b:block DOT { return { type: 'program', block: b } 
+prog   = b:block DOT { return { type: 'program', block: b } }
 
-block  = VAR var (PROCEDURE ID PYC block PYC)* st { }
-       / CONST cons VAR var (PROCEDURE ID PYC block PYC)* st { }
-       / CONST cons (PROCEDURE ID PYC block PYC)* st { }
-       / (PROCEDURE ID PYC block PYC)* st { }
+block  = VAR v:var p:proc s:st 
+           { 
+             
+             return { 
+               type: 'block',
+               vars: v,
+               procs: p,
+               st: s
+             }        
+           }
+       / CONST c:cons VAR v:var p:proc s:st 
+           {         
+             
+             return { 
+               type: 'block',
+               consts: c,
+               vars: v,
+               procs: p,
+               st: s
+             }        
+           }
+       / CONST c:cons p:proc s:st 
+           { 
+             
+             return { 
+               type: 'block',
+               consts: c,
+               procs: p,
+               st: s
+             }        
+           }
+       / p:proc s:st 
+           { 
+             
+             return { 
+               type: 'block',
+               procs: p,
+               st: s
+             }        
+           }
 
-cons   = ID ASSIGN NUMBER !(PYC) (COMA ID ASSIGN NUMBER)* PYC { }
+cons   = i:ID ASSIGN n:NUMBER c:(COMA ID ASSIGN NUMBER)* PYC 
+           {     
+             
+             var result = [{type: '=', left: i, right: n}];
+             for (var x = 0; x < c.length; x++)
+               result.push({type: '=', left: c[x][1], right: c[x][3]});
+             
+             return result;
+           }
 
-var    = ID !(PYC) (COMA ID)* PYC { }
-
+var    = i:ID v:(COMA ID)* PYC
+           {     
+             
+             var ids = [i];
+             for (var x = 0; x < v.length; x++)
+               ids.push(v[x][1]);
+             
+             return ids;
+           }
+           
+proc   = p:(PROCEDURE ID PYC block PYC)*
+           {
+                  
+             var result = [];
+             for (var x = 0; x < p.length; x++)
+               result.push({type: 'procedure', id: p[x][1], block: p[x][3]});
+             
+             return result;
+           }
+           
 st     = i:ID ASSIGN e:exp            
             { return { type: '=', left: i, right: e }; }
        / CALL i:ID { return { type: 'call', id: i }; }
-       / BEGIN l:st !(END) r:(PYC st)* END
+       / BEGIN l:st r:(PYC st)* END
            { 
              var result = [l];
 	           for (var i = 0; i < r.length; i++)
 	             result.push(r[i][1]);
 	     
-	           return {
-	             type: 'begin', 
-	             sts: result
-	           }; 
-	 
+	           return result;
            }
        / IF c:cond THEN st:st ELSE sf:st
            {
