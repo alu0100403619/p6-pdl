@@ -14,7 +14,7 @@ Por último se realizaran una serie de pruebas que permitirán comprobar el correc
 ## Recursos utilizados
 
 * PEG.js: http://pegjs.majda.cz/ - Generación del analizador ampliado de PL0
-* Heroku: https://www.heroku.com/? - Plataforma de aplicaciones en la nube
+* Heroku: https://www.heroku.com/ - Plataforma de aplicaciones en la nube
 * Heroku Postgres: https://devcenter.heroku.com/articles/heroku-postgresql - Servicio de base de datos SQL proporcionado por Heroku
 * DataMapper: http://datamapper.org/ - ORM escrito en Ruby
 
