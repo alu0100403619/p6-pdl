@@ -29,7 +29,7 @@ get '/grammar' do
 end
 
 get '/test' do
-  erb :test
+  erb :tests
 end
 
 
