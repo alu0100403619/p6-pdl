@@ -32,5 +32,5 @@ Por último se realizaran una serie de pruebas que permitirán comprobar el correc
 
 ## Despliegue
 
-* Heroku:
-* Pruebas:
+* Heroku: http://analizador-p6pdl.herokuapp.com/
+* Pruebas: http://analizador-p6pdl.herokuapp.com/tests
