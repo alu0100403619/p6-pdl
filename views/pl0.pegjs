@@ -19,10 +19,32 @@
   }
 }
 
+prog   = b:block DOT { return { type: 'program', block: b } 
+
+block  = VAR var (PROCEDURE ID PYC block PYC)* st { }
+       / CONST cons VAR var (PROCEDURE ID PYC block PYC)* st { }
+       / CONST cons (PROCEDURE ID PYC block PYC)* st { }
+       / (PROCEDURE ID PYC block PYC)* st { }
+
+cons   = ID ASSIGN NUMBER !(PYC) (COMA ID ASSIGN NUMBER)* PYC { }
+
+var    = ID !(PYC) (COMA ID)* PYC { }
+
 st     = i:ID ASSIGN e:exp            
             { return { type: '=', left: i, right: e }; }
        / CALL i:ID { return { type: 'call', id: i }; }
-       / BEGIN l:st r:(PYC st)* END { return {type: 'begin', left: l, right: r }; }
+       / BEGIN l:st !(END) r:(PYC st)* END
+           { 
+             var result = [l];
+	           for (var i = 0; i < r.length; i++)
+	             result.push(r[i][1]);
+	     
+	           return {
+	             type: 'begin', 
+	             sts: result
+	           }; 
+	 
+           }
        / IF c:cond THEN st:st ELSE sf:st
            {
              return {
@@ -64,13 +86,18 @@ _ = $[ \t\n\r]*
 ASSIGN   = _ op:'=' _  { return op; }
 ADD      = _ op:[+-] _ { return op; }
 MUL      = _ op:[*/] _ { return op; }
-COND     = _ op:([<>=!]=|[<>]) _ { return op; }
+COND     = _ op:$([<>=!][=]/[<>]) _ { return op; }
 LEFTPAR  = _"("_
 RIGHTPAR = _")"_
 PYC      = _";"_
+COMA     = _","_
+DOT      = _"."_
 CALL     = _ "call" _
 BEGIN    = _ "begin" _
 END      = _ "end" _
+PROCEDURE = _ "procedure" _
+CONST    = _ "const" _
+VAR      = _ "var" _
 IF       = _ "if" _
 THEN     = _ "then" _
 ELSE     = _ "else" _
