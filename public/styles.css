@@ -32,7 +32,7 @@
 
   nav {
     font-weight: bold; 
-    background: #444;
+    background: #234084;
     color: white;
   }
 
@@ -93,9 +93,8 @@
   pre {
     white-space: pre-wrap;       /* css-3 */
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
-    padding-left: 50px;
-    padding-right: 50px;
-    background: black;
+    padding: 50px;
+    background: white;
     border-style:outset;
     border-width:8px;
   }
@@ -165,6 +164,7 @@
     text-align: center;
     text-shadow: 1.5px 1.5px 1.5px white;
     color: white;
+    padding-top: 50px;
   }
   
   #piedepagina a {

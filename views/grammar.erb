@@ -11,20 +11,20 @@ Recuerde que un PEG $G$ es una cuaterna $G =(\Sigma,V,P,S)$.
 <ol>
   <li>$\Sigma$ es el conjunto de terminales. 
   <li>$V$ es un conjunto (disjunto de $\Sigma$) que se denomina conjunto de 
-      <i>s&aicute;�mbolos no terminales</i>,
-      <i>variables sint&aacute;cticas</i> o <i>categor&aicute;�as gram&aacute;ticales</i>,
+      <i>símbolos no terminales</i>,
+      <i>variables sintácticas</i> o <i>categorías gramáticales</i>,
   <li>$P$ es un conjunto de pares de $V \times (V \cup \Sigma )^*$. En vez de escribir
-  un par usando la notaci&oacute;n $(A, \alpha) \in P$ se escribe $A \leftarrow \alpha$.
-  Un elemento de $P$ se denomina <i>regla de an&aacute;lisis</i>. 
-  <li>Por &uacute;ltimo, $S$ es un s&iacute;�mbolo del conjunto
-  $V$ que se denomina <i>expresi&oacute;n de arranque</i>.
+  un par usando la notación $(A, \alpha) \in P$ se escribe $A \leftarrow \alpha$.
+  Un elemento de $P$ se denomina <i>regla de análisis</i>. 
+  <li>Por último, $S$ es un símbolo del conjunto
+  $V$ que se denomina <i>expresión de arranque</i>.
 </ol>
 <ol>
   <li> $\Sigma = \{ call, begin, end, procedure, const, var, if, then, else, while, do, odd, <, <=, >, >=, ==, !=, =, +, -, *, /, (, ), 0 \ldots 9 \}$, 
   <li> $V = \{ prog, block, cons, var, proc, st, cond, exp, term, factor \} \cup$ <br />
   $\{ASSIGN, ADD, MUL, COND, LEFTPAR, RIGHTPAR, PYC, COMA, DOT \} \cup$ <br />
   $\{CALL, BEGIN, END, PROCEDURE, CONST, VAR, IF, THEN, ELSE, ID, NUMBER, \_ \}$
-  <li> Reglas de An&aacute;lisis:
+  <li> Reglas de Análisis:
   <ol>
 <pre>
 prog   = block DOT
