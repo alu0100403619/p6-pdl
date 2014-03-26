@@ -49,7 +49,7 @@ post '/save' do
     c.save
   else
         if PL0Program.all.size > 9
-                 c = PL0Program.all.simple
+                 c = PL0Program.get(1)
                  c.destroy
         end
     c = PL0Program.new
