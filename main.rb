@@ -28,7 +28,7 @@ get '/grammar' do
   erb :grammar
 end
 
-get '/test' do
+get '/tests' do
   erb :tests
 end
 
