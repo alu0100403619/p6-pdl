@@ -1,83 +1,176 @@
-body {
-  font-family: Helvetica, Arial, sans-serif; }
 
-h1 {
-  color: #990033;
-  font: 32px/1 Helvetica, Arial, sans-serif; }
+/* Fuentes */
 
-header h1 {
-  font-size: 40px;
-  line-height: 80px;
-  background: transparent url(/images/logo.png) 0 0 no-repeat;
-  background-size: 5% 70%;
-  padding-left: 84px; }
+  @font-face {
+    font-family: 'Andika';
+    src: url("fuentes/Andika-R.ttf");
+  }
 
-nav {
-  font-weight: bold; }
+/* General */
+
+  body {
+    background: #183026 url('images/fondo.jpg') no-repeat;
+    background-size: cover;
+    background-position: center 0;
+    background-attachment: fixed;
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+
+  h1 {
+    font-family: Andika;
+    font-size: 40px;
+    color: black;
+  }
+
+  header h1 {
+    font-size: 65px;
+    text-shadow: 0px 0px 8px #FFFF00;
+    text-align: center; 
+  }
+
+  nav {
+    font-weight: bold; 
+  }
   nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     background: #444444;
-    overflow: hidden; }
+    overflow: hidden; 
+  }
   nav li {
-    float: left; }
+    float: left; 
+  }
   nav a {
     text-decoration: none;
     display: block;
     padding: 8px;
     background: #444444;
-    color: white; }
-    nav a:hover {
-      background: #111111; }
+    color: white; 
+  }
+  nav a:hover {
+    background: #111111; 
+  }
 
-p {
-  font: 13px/1.4 Helvetica, Arial, sans-serif; }
+  p {
+    color: white;
+    font-size: 18px;
+    text-align: justify;
+    text-indent: 0.8em;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #A9A9F5;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+    color: #FFF;
+  }
+  
+  a:link { 
+    color:#00FFFF; 
+  }
+  
+  a:visited { 
+    color:#40FF00;
+  }
+  
+  a:active {
+    color:#0000FF;
+  }
+  
+  footer {
+    position:fixed;
+    left:0;
+    bottom:0;
+    height:20px;
+    width:100%;
+    padding: 0.6em 0 0.6em 0;
+    box-shadow: inset 0px 10px 60px 0px rgba(255,255,255,0.15);
+  }
+  
+  pre {
+    white-space: pre-wrap;       /* css-3 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    padding-left: 10px;
+  }
+  
+  label {
+    display: block; 
+  }
 
-label {
-  display: block; }
+  nav a.current {
+    background: #c4c4c4; 
+  }
 
-nav a.current {
-  background: #c4c4c4; }
+  .flash {
+    width: 600px;
+    padding: 5px;
+    font-weight: bold;
+    margin: 20px;
+    background: #ffccdd;
+    color: #990033;
+    border: 1px solid #990033;
+  }
 
-.flash {
-  width: 600px;
-  padding: 5px;
-  font-weight: bold;
-  margin: 20px;
-  background: #ffccdd;
-  color: #990033;
-  border: 1px solid #990033; }
+  #like p {
+    font-weight: bold;
+    color: #990033;
+  }
+  
+  #like input {
+    background: #990033 url(/images/like.png) 0 2px no-repeat;
+    border: #660022 1px solid;
+    height: 28px;
+    padding-left: 24px;
+  }
 
-#like p {
-  font-weight: bold;
-  color: #990033; }
-#like input {
-  background: #990033 url(/images/like.png) 0 2px no-repeat;
-  border: #660022 1px solid;
-  height: 28px;
-  padding-left: 24px; }
-
-.loadfile {
-  background-color: #444444;
-  border-radius: 5px;
-  border: 2px solid #DDD;
-  line-height: 80px;
-  height: 20px;
-  padding: 5px; }
+  .loadfile {
+    background-color: #444444;
+    border-radius: 5px;
+    border: 2px solid #DDD;
+    line-height: 80px;
+    height: 20px;
+    padding: 5px;
+  }
   .loadfile button, .loadfile input {
     color: #444444;
     float: left;
     list-style: none;
     display: inline;
     text-align: center;
-    font-weight: bolder; }
+    font-weight: bolder; 
+  }
   .loadfile button:hover, .loadfile input:hover {
-    cursor: pointer; }
+    cursor: pointer; 
+  }
 
-.error {
-  color: white;
-  background-color: #990033; }
+  .error {
+    color: white;
+    background-color: #990033; 
+  }
 
-.centered {
-  text-align: center; }
+  .centered {
+    text-align: center; 
+  }
+
+/* Pie de página */
+
+  #piedepagina {
+    text-align: center;
+    text-shadow: 1.5px 1.5px 1.5px white;
+    color: white;
+  }
+  
+  #piedepagina a {
+    color: white;
+  }
+  
+  #piedepagina a:hover {
+    color: white;
+    text-shadow: 1.5px 1.5px 1.5px black, 0px 4px 1px white;
+    text-decoration: none;
+  }
