@@ -5,7 +5,7 @@ suite('Tests', function(){
   test('Asignacion: ', function(){
     object = pl0.parse("x = 9 .")
     assert.equal(object.type, "=")
-    assert.equal(object.left.type, "ID")
+    assert.equal(object.left.type, "id")
     assert.equal(object.left.value, "x")
     assert.equal(object.right.type, "NUM")
     assert.equal(object.right.value, "8") 
@@ -43,53 +43,53 @@ suite('Tests', function(){
   });
 
   test('Comparacion: ', function(){
-    object = pl0.parse("IF x == 1 THEN y = 3 .")
+    object = pl0.parse("if x == 1 then y = 3 .")
     assert.equal(object.condition.type, "==")
   });
 
   test('Bloque: ', function(){
-    object = pl0.parse("CONST x = 3; VAR y; PROCEDURE p; x = x + 12; CALL p.")
-    assert.equal(object[0].left.type, "CONST ID")
-    assert.equal(object[1].type, "VAR ID")
-    assert.equal(object[2].type, "PROCEDURE")
+    object = pl0.parse("const x = 3; var y; procedure p; x = x + 12; call p.")
+    assert.equal(object[0].left.type, "const id")
+    assert.equal(object[1].type, "var id")
+    assert.equal(object[2].type, "procedure")
   });
 
   test('Call: ', function(){
-    object = pl0.parse("CALL z .")
-    assert.equal(object[0].type, "CALL")
+    object = pl0.parse("call z .")
+    assert.equal(object[0].type, "call")
   });
 
   test('If - If Else: ', function(){
-    object = pl0.parse("IF x == 2 THEN b = 2.")
-    assert.equal(object[0].type, "IF")
+    object = pl0.parse("if x == 2 then b = 2.")
+    assert.equal(object[0].type, "if")
 
-    object = pl0.parse("IF x == 3 THEN z = 2 ELSE z = 1.")
-    assert.equal(object[0].type, "IFELSE")
+    object = pl0.parse("if x == 3 then z = 2 else z = 1.")
+    assert.equal(object[0].type, "ifelse")
   });
 
   test('Odd: ', function(){
-    object = pl0.parse("IF ODD 3 THEN b = 23 .")
-    assert.equal(object[0].condition.type, "ODD")
+    object = pl0.parse("if odd 3 then b = 23 .")
+    assert.equal(object[0].condition.type, "odd")
   });
 
   test('While Do: ', function(){
-    object = pl0.parse("WHILE x == 3 DO z = z+3.")
-    assert.equal(object[0].type, "WHILE")
+    object = pl0.parse("while x == 3 do z = z+3.")
+    assert.equal(object[0].type, "while")
   });
 
   test('Begin End: ', function(){
-    object = pl0.parse("BEGIN x = 3; z = b+3 END.")
-    assert.equal(object[0].type, "BEGIN")
+    object = pl0.parse("begin x = 3; z = b+3 end.")
+    assert.equal(object[0].type, "begin")
   });
 
   test('Argumentos de Call y Procedure: ', function(){
-    object = pl0.parse("VAR x, squ; PROCEDURE square(x,y,z); BEGIN squ = x * x END; CALL square(x).")
+    object = pl0.parse("var x, squ; procedure square(x,y,z); begin squ = x * x end; call square(x).")
     assert.equal(object[3].arguments[0].value, "x")
 
-    object = pl0.parse("VAR x, squ; PROCEDURE square; BEGIN squ = x * x END; CALL square.")
+    object = pl0.parse("var x, squ; procedure square; begin squ = x * x end; call square.")
     assert.equal(object[3].arguments, undefined)
 
-    object = pl0.parse("VAR x, squ; PROCEDURE square(); BEGIN squ = x * x END; CALL square().")
+    object = pl0.parse("var x, squ; procedure square(); begin squ = x * x end; call square().")
     assert.equal(object[3].arguments, undefined)
   });
 
