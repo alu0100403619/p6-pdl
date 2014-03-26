@@ -36,5 +36,20 @@
   </div>
 </div>
 
+    <script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("input"), {
+        lineNumbers: true,
+        viewportMargin: Infinity,
+        mode: perl
+      });
+
+    
+      function dump(fileName) {
+        $.get(fileName, function (data) {
+          $("#input").val(data);
+            editor.setValue(data);
+        });
+      };
+   </script>
 <script src="pl0.js"></script>
 <script src="main.js"></script>
