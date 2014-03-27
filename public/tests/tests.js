@@ -7,8 +7,8 @@ suite('Tests', function(){
     assert.equal(object.block.st.type, "=")
     assert.equal(object.block.st.left.type, "ID")
     assert.equal(object.block.st.left.value, "x")
-    assert.equal(object.right.type, "NUM")
-    assert.equal(object.right.value, "9") 
+    assert.equal(object.block.st.right.type, "NUM")
+    assert.equal(object.block.st.right.value, "9") 
   });
 
   test('Suma: ', function(){
