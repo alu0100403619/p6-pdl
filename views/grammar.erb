@@ -38,13 +38,12 @@ cons   = ID ASSIGN NUMBER (COMA ID ASSIGN NUMBER)* PYC
 
 var    = ID (COMA ID)* PYC
 
-proc   = (PROCEDURE ID LEFTPAR args RIGHTPAR PYC block PYC)*
-       / (PROCEDURE ID PYC block PYC)*
+proc   = (PROCEDURE ID args? PYC block PYC)*
 
-args   = ID (COMA ID)*
+args   = LEFTPAR ID (COMA ID)* RIGHTPAR
 
 st     = ID ASSIGN exp
-       / CALL ID
+       / CALL ID args?
        / BEGIN st (PYC st)* END
        / IF cond THEN st ELSE st
        / IF cond THEN st
