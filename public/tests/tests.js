@@ -49,9 +49,9 @@ suite('Tests', function(){
 
   test('Bloque: ', function(){
     object = pl0.parse("const x = 3; var y; procedure p; x = x + 12; call p.")
-    assert.equal(object[0].block.consts.left.type, "ID")
-    assert.equal(object[1].block.vars.type, "ID")
-    assert.equal(object[2].block.procs.type, "procedure")
+    assert.equal(object.block.consts.left.type, "ID")
+    assert.equal(object.block.vars.type, "ID")
+    assert.equal(object.block.procs.type, "procedure")
   });
 
   test('Call: ', function(){
