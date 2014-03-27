@@ -59,10 +59,13 @@ post '/save' do
                  c = PL0Program.get(num)
                  c.destroy
         end
-    c = PL0Program.new
+    if PL0Program.all.size < 10
+                 c = PL0Program.new
     c.name = params["fname"]
     c.source = params["input"]
     c.save
+    end
+    
   end
   pp c
   redirect '/'

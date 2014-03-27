@@ -13,38 +13,38 @@ suite('Tests', function(){
 
   test('Suma: ', function(){
     object = pl0.parse("x = 3 + 5 .")
-    assert.equal(object.right.type, "+")
+    assert.equal(object.block.st.right.type, "+")
   });
 
   test('Multiplicacion: ', function(){
     object = pl0.parse("x = 4 * 1 .")
-    assert.equal(object.right.type, "*") 
+    assert.equal(object.block.st.right.type, "*") 
   });
 
   test('Division: ', function(){
     object = pl0.parse("x = 1 / 6 .")
-    assert.equal(object.right.type, "/")
+    assert.equal(object.block.st.right.type, "/")
   });
 
   
   test('Asociatividad de izquierda: ', function(){
     object = pl0.parse("x = 1-2-3 .")
-    assert.equal(object.right.left.type, "-") 
+    assert.equal(object.block.st.right.left.type, "-") 
   });
   
   test('Parentesis: ', function(){
     object = pl0.parse("x = (2+4) * 9 .")
-    assert.equal(object.right.left.type, "+")
+    assert.equal(object.block.st.right.left.type, "+")
   });
   
   test('Precedencia: ', function(){
     object = pl0.parse("x = 2+3*3 .")
-    assert.equal(object.right.left.type, "NUM")
+    assert.equal(object.block.st.right.left.type, "NUM")
   });
 
   test('Comparacion: ', function(){
     object = pl0.parse("if x == 1 then y = 3 .")
-    assert.equal(object.condition.type, "==")
+    assert.equal(object.block.st.condition.type, "==")
   });
 
   test('Bloque: ', function(){
