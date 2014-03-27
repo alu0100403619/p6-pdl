@@ -19,6 +19,7 @@
   }
 }
 
+prog   = b:block DOT { return { type: 'program', block: b } }
 
 block  = VAR v:var p:proc s:st 
            { 
