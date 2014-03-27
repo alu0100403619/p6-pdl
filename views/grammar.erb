@@ -21,7 +21,7 @@ Recuerde que un PEG $G$ es una cuaterna $G =(\Sigma,V,P,S)$.
 </ol>
 <ol>
   <li> $\Sigma = \{ call, begin, end, procedure, const, var, if, then, else, while, do, odd, <, <=, >, >=, ==, !=, =, +, -, *, /, (, ), 0 \ldots 9 \}$, 
-  <li> $V = \{ prog, block, cons, var, proc, st, cond, exp, term, factor \} \cup$ <br />
+  <li> $V = \{ prog, block, cons, var, proc, args, st, cond, exp, term, factor \} \cup$ <br />
   $\{ASSIGN, ADD, MUL, COND, LEFTPAR, RIGHTPAR, PYC, COMA, DOT \} \cup$ <br />
   $\{CALL, BEGIN, END, PROCEDURE, CONST, VAR, IF, THEN, ELSE, ID, NUMBER, \_ \}$
   <li> Reglas de Análisis:
@@ -38,7 +38,10 @@ cons   = ID ASSIGN NUMBER (COMA ID ASSIGN NUMBER)* PYC
 
 var    = ID (COMA ID)* PYC
 
-proc   = (PROCEDURE ID PYC block PYC)*
+proc   = (PROCEDURE ID LEFTPAR args RIGHTPAR PYC block PYC)*
+       / (PROCEDURE ID PYC block PYC)*
+
+args   = ID (COMA ID)*
 
 st     = ID ASSIGN exp
        / CALL ID
