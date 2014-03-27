@@ -82,26 +82,39 @@ var    = i:ID v:(COMA ID)* PYC
              return ids;
            }
            
-proc   = p:(PROCEDURE ID PYC block PYC)*
+proc   = p:(PROCEDURE ID args? PYC block PYC)*
            {
                   
              var result = [];
              for (var x = 0; x < p.length; x++)
-               result.push({type: 'procedure', id: p[x][1], block: p[x][3]});
+               result.push({type: 'procedure', id: p[x][1], arguments: p[x][2], block: p[x][4]});
+             
+             return result;
+           }
+           
+args   = LEFTPAR i:ID is:(COMA ID)* RIGHTPAR
+           {
+     
+             var result = [i];
+             for (var x = 0; x < is.length; x++)
+               result.push(is[x][1]);
              
              return result;
            }
            
 st     = i:ID ASSIGN e:exp            
             { return { type: '=', left: i, right: e }; }
-       / CALL i:ID { return { type: 'call', id: i }; }
+       / CALL i:ID a:args? 
+           { 
+             return { type: 'call', id: i, arguments: a }; 
+           }
        / BEGIN l:st r:(PYC st)* END
            { 
              var result = [l];
-	           for (var i = 0; i < r.length; i++)
-	             result.push(r[i][1]);
-	     
-	           return result;
+               for (var i = 0; i < r.length; i++)
+                 result.push(r[i][1]);
+         
+               return result;
            }
        / IF c:cond THEN st:st ELSE sf:st
            {
