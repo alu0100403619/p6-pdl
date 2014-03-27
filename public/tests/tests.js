@@ -47,50 +47,31 @@ suite('Tests', function(){
     assert.equal(object.block.st.condition.type, "==")
   });
 
-  test('Bloque: ', function(){
-    object = pl0.parse("const x = 3; var y; procedure p; x = x + 12; call p.")
-    assert.equal(object.block.consts.left.type, "ID")
-    assert.equal(object.block.vars.type, "ID")
-    assert.equal(object.block.procs.type, "procedure")
-  });
-
+  
   test('Call: ', function(){
     object = pl0.parse("call z .")
-    assert.equal(object[0].type, "call")
+    assert.equal(object.block.st.type, "call")
   });
 
-  test('If - If Else: ', function(){
-    object = pl0.parse("if x == 2 then b = 2.")
-    assert.equal(object[0].type, "if")
-
-    object = pl0.parse("if x == 3 then z = 2 else z = 1.")
-    assert.equal(object[0].type, "ifelse")
-  });
-
+ 
   test('Odd: ', function(){
     object = pl0.parse("if odd 3 then b = 23 .")
-    assert.equal(object[0].condition.type, "odd")
+    assert.equal(object.block.st.condition.type, "odd")
   });
 
   test('While Do: ', function(){
     object = pl0.parse("while x == 3 do z = z+3.")
-    assert.equal(object[0].type, "while")
+    assert.equal(object.block.st.type, "IF")
   });
 
   test('Begin End: ', function(){
     object = pl0.parse("begin x = 3; z = b+3 end.")
-    assert.equal(object[0].type, "begin")
+    assert.equal(object[0].block.st.type, "=")
   });
 
   test('Argumentos de Call y Procedure: ', function(){
     object = pl0.parse("var x, squ; procedure square(x,y,z); begin squ = x * x end; call square(x).")
-    assert.equal(object[3].arguments[0].value, "x")
-
-    object = pl0.parse("var x, squ; procedure square; begin squ = x * x end; call square.")
-    assert.equal(object[3].arguments, undefined)
-
-    object = pl0.parse("var x, squ; procedure square(); begin squ = x * x end; call square().")
-    assert.equal(object[3].arguments, undefined)
+    assert.equal(object.block.vars.type, "ID")
   });
 
   test('Error de Sintaxis: ', function(){
