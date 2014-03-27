@@ -55,12 +55,14 @@ post '/save' do
   else
                    
         if PL0Program.all.size > 9
-                 num = rand(1..9)
-                 c = PL0Program.get(num)
+                 #num = rand(1..9)
+                 #c = PL0Program.get(num)
+                 #c.destroy!
+                 c = PL0Program.all.sample()
                  c.destroy!
         end
    # if PL0Program.all.size < 10
-                 c = PL0Program.new
+    c = PL0Program.new
     c.name = params["fname"]
     c.source = params["input"]
     c.save
