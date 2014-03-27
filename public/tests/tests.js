@@ -56,7 +56,7 @@ suite('Tests', function(){
  
   test('Odd: ', function(){
     object = pl0.parse("if odd 3 then b = 23 .")
-    assert.equal(object.block.st.condition.type, "[ '', 'odd', ' ']")
+    assert.equal(object.block.st.condition.type, "[ \'\', \'odd\', \' \']")
   });
 
   test('While Do: ', function(){
@@ -66,7 +66,7 @@ suite('Tests', function(){
 
   test('Begin End: ', function(){
     object = pl0.parse("begin x = 3; z = b+3 end.")
-    assert.equal(object.block.st.type, "=")
+    assert.equal(object.type, "block")
   });
 
   test('Error de Sintaxis: ', function(){
