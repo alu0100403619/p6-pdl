@@ -3,12 +3,12 @@ var assert = chai.assert;
 suite('Tests', function(){
   
   test('Asignacion: ', function(){
-    object = pl0.parse("x = 9 .")
-    assert.equal(object.type, "=")
-    assert.equal(object.left.type, "id")
-    assert.equal(object.left.value, "x")
+    object = pl0.parse("x = 9 ")
+    assert.equal(object.block.st.type, "=")
+    assert.equal(object.block.st.left.type, "id")
+    assert.equal(object.block.st.left.value, "x")
     assert.equal(object.right.type, "NUM")
-    assert.equal(object.right.value, "8") 
+    assert.equal(object.right.value, "9") 
   });
 
   test('Suma: ', function(){
